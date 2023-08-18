@@ -13,38 +13,32 @@ export const Typography = ({
   const tagMapping = {
     h1: {
       tag: "h1",
-      classes:
-        "2xl:text-[56px] 2xl:leading-[70px] xl:text-5xl  md:text-4xl text-dark1   sm:text-3xl text-2xl font-monserrat font-bold",
+      classes: "text-6xl   font-monserrat font-bold",
     },
     h2: {
       tag: "h2",
-      classes:
-        "2xl:text-4xl xl:text-3xl md:text-2xl sm:text-xl text-lg font-monserrat font-bold",
+      classes: "text-5xl  font-monserrat font-bold",
     },
     h3: {
       tag: "h3",
-      classes:
-        "2xl:text-[32px] 2xl:leading-[32px] lg:text-3xl md:text-2xl   sm:text-xl text-lg font-monserrat font-bold",
+      classes: "text-4xl  font-monserrat font-bold",
     },
     h4: {
       tag: "h4",
-      classes:
-        "2xl:text-[32px] 2xl:leading-[32px] lg:text-3xl md:text-2xl   sm:text-xl text-lg font-monserrat font-bold ",
+      classes: "text-3xl font-monserrat font-bold ",
     },
     h5: {
       tag: "h5",
-      classes:
-        "2xl:text-2xl xl:text-xl md:text-lg sm:text-base text-sm font-monserrat font-medium ",
+      classes: "text-2xl  font-monserrat font-medium ",
     },
-    h6: { tag: "h6", classes: "h1" },
+    h6: { tag: "h6", classes: "text-xl  font-monserrat font-medium" },
     p: {
       tag: "p",
-      classes:
-        "2xl:text-xl lg:text-lg sm:text-base text-sm  font-monserrat font-normal",
+      classes: "text-lg  font-monserrat font-normal",
     },
     p1: {
       tag: "p",
-      classes: "2xl:text-lg md:text-base text-sm   font-monserrat font-normal ",
+      classes: "text-base  font-monserrat font-normal ",
     },
   };
   const colors = {
@@ -59,7 +53,7 @@ export const Typography = ({
   const colorClass = colors[color];
 
   return (
-    <Component className={`${classes} ${colorClass} ${className}`} {...props}>
+    <Component className={`${classes}  ${colorClass} ${className}`} {...props}>
       {children}
     </Component>
   );
@@ -82,7 +76,7 @@ export const Headings = ({
     case fifty_six:
       return (
         <h1
-          className={`2xl:text-[56px] 2xl:leading-[70px] xl:text-5xl  md:text-4xl text-dark1   sm:text-3xl text-2xl font-monserrat font-bold  ${className}`}
+          className={`text-[56px]  xl:text-5xl  md:text-4xl text-dark1   sm:text-3xl text-2xl font-monserrat font-bold  ${className}`}
         >
           {children}
         </h1>
@@ -90,7 +84,7 @@ export const Headings = ({
     case thirty_six:
       return (
         <h2
-          className={`2xl:text-4xl xl:text-3xl md:text-2xl sm:text-xl text-lg font-monserrat font-bold ${className}`}
+          className={`text-4xl xl:text-3xl md:text-2xl sm:text-xl text-lg font-monserrat font-bold ${className}`}
         >
           {children}
         </h2>
@@ -98,7 +92,7 @@ export const Headings = ({
     case thirty_two:
       return (
         <h3
-          className={`2xl:text-[32px] 2xl:leading-[32px] lg:text-3xl md:text-2xl   sm:text-xl text-lg font-monserrat font-bold ${className}`}
+          className={`text-[32px] leading-[32px] lg:text-3xl md:text-2xl   sm:text-xl text-lg font-monserrat font-bold ${className}`}
         >
           {children}
         </h3>
@@ -106,7 +100,7 @@ export const Headings = ({
     case twenty_eight:
       return (
         <h4
-          className={`2xl:text-[28px] 2xl:leadiing-[28px] lg:text-2xl  md:text-xl  sm:text-lg text-dark1 text-base font-monserrat font-bold ${className}`}
+          className={`text-[28px] leadiing-[28px] lg:text-2xl  md:text-xl  sm:text-lg text-dark1 text-base font-monserrat font-bold ${className}`}
           style={style}
         >
           {children}
@@ -115,7 +109,7 @@ export const Headings = ({
     case twenty_four:
       return (
         <h5
-          className={`2xl:text-2xl xl:text-xl md:text-lg sm:text-base text-sm font-monserrat font-medium ${className}`}
+          className={`text-2xl  sm:text-base text-sm font-monserrat font-medium ${className}`}
           style={style}
         >
           {children}
@@ -124,7 +118,7 @@ export const Headings = ({
     case twenty:
       return (
         <p
-          className={`2xl:text-xl lg:text-lg sm:text-base text-sm  font-monserrat font-normal ${className}`}
+          className={`text-xl lg:text-lg sm:text-base text-sm  font-monserrat font-normal ${className}`}
         >
           {children}
         </p>
@@ -132,7 +126,7 @@ export const Headings = ({
     case eighteen:
       return (
         <p
-          className={`2xl:text-lg md:text-base text-sm   font-monserrat font-normal ${className}`}
+          className={`text-lg text-sm   font-monserrat font-normal ${className}`}
         >
           {children}
         </p>
@@ -140,7 +134,7 @@ export const Headings = ({
     case sixteen:
       return (
         <p
-          className={`2xl:text-base sm:text-sm text-xs  font-monserrat font-normal ${className}`}
+          className={`text-base sm:text-sm text-xs  font-monserrat font-normal ${className}`}
         >
           {children}
         </p>
