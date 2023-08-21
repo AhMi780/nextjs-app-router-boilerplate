@@ -1,94 +1,66 @@
 import React from "react";
-import Link from "next/link";
+import PropTypes from "prop-types";
+import classNames from "classnames";
 
-export const ButtonV2 = ({
+const Button = ({
+  variant,
+  size,
+  fullWidth,
+  isLoading,
   children,
   className,
-  onClick,
-  isLoading,
-  type,
-  transparent,
-  disabled,
-  href,
-  ContainerClass,
-  showTransition,
-  ...rest
+  ...props
 }) => {
-  const Buttons = () => {
-    return (
-      <button
-        {...rest}
-        onClick={onClick}
-        disabled={disabled}
-        className={` ${
-          transparent
-            ? "bg-white border border-white hover:!border-primary text-primary  hover:text-white"
-            : "bg-primary border !border-transparent text-white hover:!border-transparent"
-        } outline-none disabled:bg-gray-500 disabled:text-gray2 relative overflow-hidden px-3 sm:px-5 group disabled:cursor-not-allowed p-2 2xl:py-[11px] py-[8px] 2xl:text-base text-sm font-lato_bold rounded-[30px] ${className}`}
-        type={type}
-      >
-        {isLoading ? (
-          <div
-            className={`${
-              transparent
-                ? "from-primary animate-spin via-primary to-white"
-                : "from-white animate-spin via-white to-primary"
-            } bg-gradient-to-b w-6 h-6 mx-auto rounded-full flex items-center`}
-          >
-            <div
-              className={`${
-                transparent ? "bg-white" : "bg-primary"
-              }  w-5 h-5 m-auto rounded-full`}
-            ></div>
-          </div>
-        ) : (
-          <>
-            {showTransition && (
-              <div
-                style={{ backgroundColor: showTransition }}
-                className={`absolute z-[1] content-[' '] transition-all duration-300 group-hover:w-full h-full top-0 left-0 w-0 
-                
-                `}
-                // ${
-                //   transparent ? "bg-primary" : "bg-primary/50"
-                // }
-              ></div>
-            )}
-            <div className="relative z-10">{children}</div>
-          </>
-        )}
-      </button>
-    );
+  const baseStyles =
+    "rounded px-4 py-2 transition ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 ";
+
+  const variantStyles = {
+    primary: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",
+    secondary: "bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500",
+    outline:
+      "text-blue-600 border border-blue-600 hover:bg-blue-100 focus:ring-blue-500",
   };
+
+  const sizeStyles = {
+    small: "text-sm px-3 py-1",
+    medium: "text-base px-4 py-2",
+    large: "text-lg px-5 py-3",
+  };
+
+  const widthStyle = fullWidth ? "w-full" : "";
+
   return (
-    <div className={`max-w-max ${ContainerClass}`}>
-      {href ? (
-        <Link href={href ? href : ""}>
-          <Buttons />
-        </Link>
-      ) : (
-        <>
-          <Buttons />
-        </>
+    <button
+      className={classNames(
+        baseStyles,
+        variantStyles[variant],
+        sizeStyles[size],
+        widthStyle,
+        className
       )}
-    </div>
+      disabled={isLoading}
+      {...props}
+    >
+      {isLoading ? "Loading..." : children}
+    </button>
   );
 };
 
-export const Spinner = ({ transparent }) => {
-  return (
-    <div
-      className={`${
-        transparent
-          ? "from-primary animate-spin via-primary to-white"
-          : "from-white animate-spin via-white to-primary"
-      } bg-gradient-to-b  w-6 h-6 mx-auto rounded-full flex items-center`}
-    >
-      <div
-        className={`${
-          transparent ? "bg-white" : "bg-primary"
-        }  w-5 h-5 m-auto rounded-full`}
-      ></div>
-    </div>
-  );
+Button.propTypes = {
+  variant: PropTypes.oneOf(["primary", "secondary", "outline"]),
+  size: PropTypes.oneOf(["small", "medium", "large"]),
+  fullWidth: PropTypes.bool,
+  isLoading: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
 };
+
+Button.defaultProps = {
+  variant: "primary",
+  size: "medium",
+  fullWidth: false,
+  isLoading: false,
+  className: "",
+};
+
+export default Button;
